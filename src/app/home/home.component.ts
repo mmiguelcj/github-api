@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private users:any;
+  users:any;
+  name: string = "Mauri Miguel";
+  numRepos: number = 0;
 
   constructor(private githubService: GithubService) { }
 
   getUsers(){
-    this.githubService.getUsers(null).subscribe( users => {
-      console.log(users);
+    this.githubService.getUsers(this.name, this.numRepos).subscribe( users => {
       this.users = users;
     });
   }

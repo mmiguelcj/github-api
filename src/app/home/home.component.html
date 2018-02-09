@@ -1,13 +1,34 @@
 <div class="container">
   <div class="row center">
-    <div class="s12">
-      <a class="waves-effect red lighten-1 btn"
-      routerLink="/new">Listuser</a>
-    </div>
-    
-    <div class="s12">
-      <a class="s12 waves-effect red lighten-1 btn"
-      routerLink="/users">List users</a>
-    </div>
-  </div>  
+    <form action="">
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="first_name" [(ngModel)]="name" type="text">
+          <label class="active" >Nome</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="num" [(ngModel)]="numRepos" type="number" min="1" step="1" >
+          <label class="active" >Numero mínimo de Repositórios</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" (click)="getUsers()">Carregar
+      </button>
+    </form>
+  </div>
 </div>
+
+<div *ngIf="users" class="collection">
+  <div *ngIf="users.total_count > 0" class="row">
+    <a class="collection-item" 
+    *ngFor="let user of users.items; let i = index"
+    [routerLink]="['/user', user.login]"> {{ user.login }} </a>
+  </div>
+  <div *ngIf="users.total_count == 0" class="row">
+    <div class="s12 #00bfa5 teal accent-4 center">
+        Nenhum resultado encontrado.
+    </div>
+  </div>
+</div>
+  

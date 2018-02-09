@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app.routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,13 +16,14 @@ import { MaterializeModule } from 'angular2-materialize';
   declarations: [
     AppComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterializeModule
+    MaterializeModule,
+    AppRoutingModule
   ],
   providers: [GithubService],
   bootstrap: [AppComponent]
